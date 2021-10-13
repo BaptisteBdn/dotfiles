@@ -16,5 +16,8 @@
 !.config/wallpaper
 !.config/wallpaper/*
 
+.cache/*
+!.cache/wal/schemes
+!.cache/wal/schemes/*
 
 
