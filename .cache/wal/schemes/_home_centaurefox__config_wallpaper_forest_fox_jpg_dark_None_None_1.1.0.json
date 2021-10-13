@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/centaurefox/.config/wallpaper/forest_fox.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0b0f18",
+        "foreground": "#e0dcd0",
+        "cursor": "#e0dcd0"
+    },
+    "colors": {
+        "color0": "#0b0f18",
+        "color1": "#A94F34",
+        "color2": "#966859",
+        "color3": "#A09473",
+        "color4": "#DBAA54",
+        "color5": "#728082",
+        "color6": "#A0A394",
+        "color7": "#e0dcd0",
+        "color8": "#9c9a91",
+        "color9": "#A94F34",
+        "color10": "#966859",
+        "color11": "#A09473",
+        "color12": "#DBAA54",
+        "color13": "#728082",
+        "color14": "#A0A394",
+        "color15": "#e0dcd0"
+    }
+}

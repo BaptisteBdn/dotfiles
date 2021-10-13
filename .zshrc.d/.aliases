@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# List all files colorized in long format
+alias l="ls -l --color"
+
+# List all files colorized in long format, excluding . and ..
+alias ll="ls -lA --color"
+
+# List only directories
+alias lsd="ls -l --color | grep --color=never '^d'"
+
+# Always use color output for `ls`
+alias ls="command ls --color"
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# IP addresses
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ipa="ip -c a"
+
+# Alacritty ssh : https://github.com/alacritty/alacritty/issues/3443
+alias ssh='env TERM=xterm-256color ssh'

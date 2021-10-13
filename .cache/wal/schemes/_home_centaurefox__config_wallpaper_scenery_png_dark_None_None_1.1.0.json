@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/centaurefox/.config/wallpaper/scenery.png",
+    "alpha": "100",
+    "special": {
+        "background": "#121936",
+        "foreground": "#c0dce2",
+        "cursor": "#c0dce2"
+    },
+    "colors": {
+        "color0": "#121936",
+        "color1": "#099ED4",
+        "color2": "#6CA4CF",
+        "color3": "#74CCEE",
+        "color4": "#B7B8B9",
+        "color5": "#EADFB0",
+        "color6": "#F8F6B0",
+        "color7": "#c0dce2",
+        "color8": "#869a9e",
+        "color9": "#099ED4",
+        "color10": "#6CA4CF",
+        "color11": "#74CCEE",
+        "color12": "#B7B8B9",
+        "color13": "#EADFB0",
+        "color14": "#F8F6B0",
+        "color15": "#c0dce2"
+    }
+}
