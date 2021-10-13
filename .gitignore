@@ -11,6 +11,8 @@
 !.config/gtk-3.0/settings.ini
 !.config/i3
 !.config/i3/*
+!.config/polybar
+!.config/polybar/*
 !.config/i3blocks/
 !.config/i3blocks/config
 !.config/wallpaper
