@@ -362,23 +362,27 @@ set $darkgrey		#383c4a
 set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
+set $alert          #ed404c
 
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
 
-# class                 border  	backgr. text indicator child_border
-client.focused          $bg     	$bg     $fg  $bg       $bg
-client.focused_inactive $darkgrey     	$bg     $fg  $bg       $darkgrey
-client.unfocused        $darkgrey     	$bg     $fg  $bg       $darkgrey
-client.urgent           $bg     	$bg     $fg  $bg       $bg
-client.placeholder      $bg     	$bg     $fg  $bg       $bg
+set_from_resource $color0 i3wm.color0 #f0f0f0
+set_from_resource $color7 i3wm.color7 #f0f0f0
+set_from_resource $color2 i3wm.color2 #f0f0f0
+set_from_resource $color8 i3wm.color8 #f0f0f0
 
-client.background       $bg
+
+# class                 border  backgr. text    indicator  child_border
+
+client.focused          #4C7899 $color2 #FFFFFF #2E9EF4   #ff833a 
+client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+client.unfocused        #333333 #color0 #888888 #292D2E   #222222
+client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 #####################################
 # Application menu handled by rofi: #

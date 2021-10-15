@@ -32,7 +32,7 @@ height = 36
 offset-x = 24
 offset-y = 24
 radius = 0.0
-fixed-center = false
+fixed-center = true
 
 line-size = 3
 
@@ -52,14 +52,16 @@ font-1 = DejaVuSansMono:style=Regular:pixelsize=17:antialias=true;3
 
 modules-left = i3
 modules-center = xwindow
-modules-right = audio lan date 
+modules-right = spotify spotify-prev spotify-play-pause spotify-next audio system-bluetooth-bluetoothctl wlan lan date 
+
+enable-ipc = true
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:25:...%
+label = %title:0:45:...%
 
 [module/filesystem]
 type = internal/fs
@@ -96,7 +98,7 @@ format = <label-state>
 
 label-focused = %index%
 label-focused-foreground = ${colors.tertiary}
-label-focused-underline= ${colors.tertiary}
+label-focused-underline = ${colors.tertiary}
 label-focused-padding = 1
 
 label-unfocused = ${self.label-focused}
@@ -117,31 +119,24 @@ interface = wlan0
 interval = 3.0
 
 format-connected = <label-connected>
-label-connected = %essid% %downspeed:9%
-label-connected-foreground = ${colors.primary}
-
-format-disconnected = <label-disconnected>
-label-disconnected = not connected
-label-disconnected-foreground = ${colors.alert}
-
-; a = worst
-ramp-signal-0 = a
-ramp-signal-1 = b
-ramp-signal-2 = c
-ramp-signal-3 = d
-ramp-signal-4 = e
-
-[module/lan]
-type = internal/network
-interface = br0
-interval = 3.0
-
-format-connected = <label-connected>
 label-connected = "直"
 label-connected-foreground = ${colors.primary}
 
 format-disconnected = <label-disconnected>
 label-disconnected = 睊
+label-disconnected-foreground = ${colors.alert}
+
+[module/lan]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+format-connected = <label-connected>
+label-connected = 
+label-connected-foreground = ${colors.primary}
+
+format-disconnected = <label-disconnected>
+label-disconnected = 
 label-disconnected-foreground = ${colors.alert}
 
 [module/date]
@@ -169,6 +164,22 @@ ramp-volume-2 = 
 label-muted = ﱝ
 label-muted-foreground = ${colors.secondary}
 
+[module/spotify]
+type = custom/script
+tail = true
+; prefix symbol is shown before the text
+format-prefix = "  "
+format-underline = ${colors.tertiary}
+format = <label>
+click-left = playerctl play-pause spotify
+click-right = playerctl next spotify
+exec = ~/.config/polybar/scripts/get_spotify_status.sh
+
+[module/system-bluetooth-bluetoothctl]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
+tail = true
+click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
 
 [module/battery]
 type = internal/battery
