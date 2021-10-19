@@ -1,87 +1,97 @@
-configuration {
+/*
+ * ROFI Powermenu template
+ * Author: @BaptisteBdn
+ */
+
+configuration {{
     modi: "window,run,drun";
-    theme: "clean";
     show-icons: true;
     font: "DejaVuSansMono Nerd Font 10";
-}
+}}
 
 @import "colors.rasi"
 
-* {
-    selected-background: #d8c45d;
-    selected-foreground: black;
-}
+* {{
+    color0:     {color0};
+    color1:     {color1};
+    color2:     {color2};
+    color3:     {color3};
+    color4:     {color4};
+    color5:     {color5};
+    color6:     {color6};
+    color7:     {color7};
+    color8:     {color8};
+    color9:     {color9};
+    fg:         {foreground};
+    bg:         {background};
+    selected-background: {color2};
+    selected-foreground: {foreground};
+}}
 
-#window {
+#window {{
     width: 450px;
     height: 120px;
-    background-color: @background-solid;
+    background-color: @color0;
     padding: 5px;
-}
+}}
 
-#mainbox {
+#mainbox {{
     border:  0;
     padding: 0;
     children: [listview];
-    background-color: @background-solid;
-}
+    background-color: @color0;
+}}
 
-#listview {
+#listview {{
     columns: 4;
     layout: vertical;
     background-color: transparent;
-}
+}}
 
-element {
+element {{
     margin: 8px;
     padding: 10px;
     border-radius: 5px;
     orientation: vertical;
-}
+}}
 
-element-icon {
-    background-color: #b0bec5;
-    border-radius: 5;
+element-icon {{
     size: 48px;
-}
+    margin: 2px;
+}}
 
-element-text {
+element-text {{
     horizontal-align: 0.5;
     vertical-align: 0.5;
-}
+}}
 
-#element.normal.normal {
+#element.normal.normal {{
     background-color: rgba(0, 0, 0, 0);
     text-color:       @foreground;
-}
+}}
 
-#element.selected.normal {
+#element.selected.normal {{
     background-color: @selected-background;
-    text-color:       @selected-foreground;
+    text-color:       @color0;
     border-color: #d07ef2;
-}
+}}
 
-#element.alternate.normal {
+#element.alternate.normal {{
     background-color: rgba(0,0,0,0);
     text-color:       @foreground;
-}
+}}
 
-
-#element-icon.selected.normal {
-    background-color: #fff78d;
-}
-
-#mode-switcher {
+#mode-switcher {{
     border:       0px 0px 0px ;
     border-color: @separatorcolor;
-}
+}}
 
-#button {
+#button {{
     spacing:    0;
     text-color: @foreground;
-}
+}}
 
-#button.selected {
+#button.selected {{
     background-color: @selected-background;
     text-color:       @selected-foreground;
-}
+}}

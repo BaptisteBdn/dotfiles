@@ -231,11 +231,11 @@ bindsym $mod+g exec flameshot gui
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -294,20 +294,6 @@ for_window [class="Seafile Client"] floating enable resize set 415 660
 # color settings for bar and windows #
 ######################################
 
-# Define colors variables: 
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
-set $alert          #ed404c
-
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
 # from the generated scheme.
@@ -315,8 +301,8 @@ set $alert          #ed404c
 # it fails to get colors from Xresources.
 
 set_from_resource $color0 i3wm.color0 #f0f0f0
-set_from_resource $color7 i3wm.color7 #f0f0f0
 set_from_resource $color2 i3wm.color2 #f0f0f0
+set_from_resource $color7 i3wm.color7 #f0f0f0
 set_from_resource $color8 i3wm.color8 #f0f0f0
 
 
@@ -334,23 +320,11 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 ## rofi bindings fancy application menu (two bindings F9/$mod+d)
 
-bindsym $mod+d exec rofi -modi drun -show drun -display-drun "Apps : " -line-padding 4 \
-                -columns 2 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
-                
-bindsym F9 exec rofi -modi drun -show drun -display-drun "Apps : " -line-padding 4 \
-                -columns 2 -padding 30 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
+bindsym $mod+d exec rofi -no-lazy-grab -show drun -modi drun -theme ~/.cache/wal/launcher.rasi
 
 ## rofi bindings for window menu (two bindings F10/$mod+t)
 
-bindsym $mod+t exec rofi -show window -display-window "Window : " -line-padding 4 \
-                -lines 10 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
-
-bindsym F10 exec rofi -show window -display-window "Window : " -line-padding 4 \
-                -lines 10 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
+bindsym $mod+t exec rofi -no-lazy-grab -show window -modi window -theme ~/.cache/wal/launcher.rasi
 
 #####################################
 # 	  Virtualisation 	    #
