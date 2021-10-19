@@ -1,18 +1,3 @@
-
-# This file is a modified version based on default i3-config-wizard config
-# source is available here:
-# https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/master/.config/i3/config
-# Maintainer: joekamprad [joekamprad@endeavouros.com] 
-# https://endeavouros.com
-#
-# --> to update this run the following command (will backup existing setup file)
-# wget --backups=1 https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/main/.config/i3/config -P ~/.config/i3/
-
-# Endeavouros-i3 config file
-# Source for complete framework of our i3 config and theming here: https://github.com/endeavouros-team/endeavouros-i3wm-setup
-# EndeavourOS wiki holds some Information also: https://endeavouros.com/docs/window-tiling-managers/i3-wm/
-# Please see http://i3wm.org/docs/userguide.html for the official i3 reference!
-
 #######################
 # config starts here: #
 #######################
@@ -166,13 +151,13 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+a kill
 
 # exit-menu
-bindsym $mod+Shift+e exec ~/.config/i3/scripts/shutdown_menu -p rofi -c
+bindsym $mod+Shift+e exec rofi -modi 'Powermenu:~/.config/rofi/scripts/powermenu.sh' -show Powermenu -theme '~/.cache/wal/powermenu.rasi' -icon-theme "Reversal-dark"
 
 # Lock the system
-# lock with a picture:
-#bindsym $mod+l exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
-# lock by blurring the screen:
-bindsym $mod+l exec ~/.config/i3/scripts/blur-lock.sh
+## lock with a picture:
+#bindsym $mod+o exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
+## lock by blurring the screen:
+bindsym $mod+o exec ~/.config/i3/scripts/blur-lock.sh
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -180,36 +165,20 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# Backlight control
-bindsym XF86MonBrightnessUp exec xbacklight +10
-bindsym XF86MonBrightnessDown exec xbacklight -10
-
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+b focus up
-bindsym $mod+o focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+b move up
-bindsym $mod+Shift+o move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+c split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -236,49 +205,24 @@ bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
 
 ## Multimedia Keys
 
-# volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
-
-
 # Pulse Audio controls
 
-#volume up
-#bindsym XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost && dunstify -h string:x-dunst-stack-tag:volume volume: $(pamixer --get-volume)%
-#volume down
-#bindsym XF86AudioLowerVolume exec pamixer -d 5 --allow-boost && dunstify -h string:x-dunst-stack-tag:volume volume: $(pamixer --get-volume)%
-#mute
-#bindsym XF86AudioMute exec pamixer -t && dunstify -h string:x-dunst-stack-tag:mute mute: $(pamixer --get-mute)!
-
-# gradular volume control
-bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
-bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
-
-# mute
-#bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
-#mute
-bindsym XF86AudioMute exec pamixer -t && notify-send "mute: $(pamixer --get-mute)"
-
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-# Redirect sound to headphones
-bindsym $mod+p exec /usr/local/bin/switch-audio-port
+# volume up
+bindcode $mod+35 exec pamixer -i 5
+# volume down
+bindcode $mod+34 exec pamixer -d 5
+# Switch sound output
+bindsym $mod+p exec ~/.config/i3/scripts/switch_audio_sink.sh
 
 ## Interface
 
 # Change wallpaper and colors
 bindsym $mod+Shift+u exec  wal -i ~/.config/wallpaper -o "$HOME/.config/dunst/launch_dunst.sh"
 
-
-
 ## App shortcuts
 bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
-bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
-
+bindsym $mod+g exec flameshot gui
 
 
 ##########################################
