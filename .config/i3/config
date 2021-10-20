@@ -294,6 +294,20 @@ for_window [class="Seafile Client"] floating enable resize set 415 660
 # color settings for bar and windows #
 ######################################
 
+# Define colors variables: 
+set $darkbluetrans	#08052be6
+set $darkblue		#08052b
+set $lightblue		#5294e2
+set $urgentred		#e53935
+set $white		#ffffff
+set $black		#000000
+set $purple		#e345ff
+set $darkgrey		#383c4a
+set $grey		#b0b5bd
+set $mediumgrey		#8b8b8b
+set $yellowbrown	#e1b700
+
+
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
 # from the generated scheme.
@@ -320,7 +334,7 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 ## rofi bindings fancy application menu (two bindings F9/$mod+d)
 
-bindsym $mod+d exec rofi -no-lazy-grab -show drun -modi drun -theme ~/.cache/wal/launcher.rasi
+bindsym $mod+d exec rofi -no-lazy-grab -drun-display-format {name} -show drun -modi drun -theme ~/.cache/wal/launcher.rasi
 
 ## rofi bindings for window menu (two bindings F10/$mod+t)
 
