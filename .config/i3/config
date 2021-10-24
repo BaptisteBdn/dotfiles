@@ -144,6 +144,8 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 # keybindings for different actions: #
 ######################################
 
+## I3 basics
+
 # start a terminal
 bindsym $mod+Return exec alacritty
 
@@ -154,8 +156,6 @@ bindsym $mod+Shift+a kill
 bindsym $mod+Shift+e exec rofi -modi 'Powermenu:~/.config/rofi/scripts/powermenu.sh' -show Powermenu -theme '~/.cache/wal/powermenu.rasi' -icon-theme "Reversal-dark"
 
 # Lock the system
-## lock with a picture:
-#bindsym $mod+o exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
 ## lock by blurring the screen:
 bindsym $mod+o exec ~/.config/i3/scripts/blur-lock.sh
 
@@ -164,6 +164,20 @@ bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
+## Window movements 
+
+# special combo for horizontal split of two windows next to each other
+bindsym $mod+Shift+t split h, layout splith, focus right, move left, focus left
+bindsym $mod+t split h, layout splith, focus left, move right, focus right
+
+# special combo for container tabbed split of two windows next to each other
+bindsym $mod+Shift+x split h, layout tabbed, focus right, move left, focus left
+bindsym $mod+x split h, layout tabbed, focus left, move right, focus right
+
+# move focused workspace between monitors
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
 
 # change focus
 bindsym $mod+h focus left
@@ -200,8 +214,22 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# open new empty workspace
-bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
+## Scratchpad
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# discord
+for_window [class="discord"] mark "discord", move scratchpad
+bindcode $mod+49 [con_mark="discord"] scratchpad show
+
+# VS Code notes
+for_window [title="^.*- Notes - Visual Studio Code$"] mark "vscode-notes", move scratchpad
+bindsym $mod+Tab [con_mark="vscode-notes"] scratchpad show
+
 
 ## Multimedia Keys
 
@@ -223,6 +251,9 @@ bindsym $mod+Shift+u exec  wal -i ~/.config/wallpaper -o "$HOME/.config/dunst/la
 bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
 bindsym $mod+g exec flameshot gui
+
+# open new empty workspace
+bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
 
 
 ##########################################
@@ -252,10 +283,6 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # num lock activated
 exec --no-startup-id numlockx on
 
-# start a script to setup displays
-# uncomment the next line, use arandr to setup displays and save the file as monitor:
-# exec --no-startup-id ~/.screenlayout/monitor.sh
-
 #transparency 
 exec --no-startup-id picom -CGb
 
@@ -270,43 +297,23 @@ focus_follows_mouse no
 
 # Startup daemons for compositor 
 exec_always --no-startup-id pkill picom; picom --no-use-damage
-# exec_always --no-startup-id pkill dunst; dunst
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-# Seafile daemon
-exec_always --no-startup-id seafile-applet &
-
 #set floating (nontiling) for special apps
-for_window [class="Xsane" instance="xsane"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
-for_window [class="qt5ct" instance="qt5ct"] floating enable
-for_window [class="Pamac-manager"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="Blueman-manager"] floating enable
-for_window [class="Seafile Client"] floating enable resize set 415 660
+for_window [class="yad"] floating enable
 
 # Autostart in workspace
-
+exec_always --no-startup-id ~/.config/i3/scripts/launch_discord.sh
+exec_always --no-startup-id /usr/bin/code ~/Seafile/Notes # Synchronised notes
 
 ######################################
 # color settings for bar and windows #
 ######################################
-
-# Define colors variables: 
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
-
 
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
@@ -321,7 +328,6 @@ set_from_resource $color8 i3wm.color8 #f0f0f0
 
 
 # class                 border  backgr. text    indicator  child_border
-
 client.focused          #4C7899 $color2 #FFFFFF #2E9EF4   #ff833a 
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
 client.unfocused        #333333 #color0 #888888 #292D2E   #222222
@@ -338,16 +344,4 @@ bindsym $mod+d exec rofi -no-lazy-grab -drun-display-format {name} -show drun -m
 
 ## rofi bindings for window menu (two bindings F10/$mod+t)
 
-bindsym $mod+t exec rofi -no-lazy-grab -show window -modi window -theme ~/.cache/wal/launcher.rasi
-
-#####################################
-# 	  Virtualisation 	    #
-#####################################
-
-## Switch monitor input and usb devices to guest
-
-#bindsym $mod+Shift+slash exec /home/centaurefox/bin/switch-to-guest.sh
-
-## Start scream (Client for the virtual sound server on the guest)
-
-#exec --no-startup-id /usr/bin/scream -o pulse -i br0 -u -p 4011
+bindsym $mod+Shift+d exec rofi -no-lazy-grab -show window -modi window -theme ~/.cache/wal/launcher.rasi
