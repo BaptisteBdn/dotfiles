@@ -306,6 +306,7 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="yad"] floating enable
+for_window [class="SimpleScreenRecorder"] floating enable border normal
 
 # Autostart in workspace
 exec_always --no-startup-id ~/.config/i3/scripts/launch_discord.sh

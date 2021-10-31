@@ -58,11 +58,16 @@ element {{
 element-icon {{
     size: 48px;
     margin: 2px;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    background-color: transparent;
 }}
 
 element-text {{
     horizontal-align: 0.5;
     vertical-align: 0.5;
+    background-color: transparent;
+    text-color:       @foreground;
 }}
 
 #element.normal.normal {{
@@ -79,6 +84,10 @@ element-text {{
 #element.alternate.normal {{
     background-color: rgba(0,0,0,0);
     text-color:       @foreground;
+}}
+
+#element-text.selected.normal {{
+    text-color:       @color0;
 }}
 
 #mode-switcher {{
