@@ -24,7 +24,7 @@ My dotfile repository containing everything needed for my i3 setup : i3-gaps, ro
     - .vimrc
 ## Usage & Installation
 
-For an easy way to install and use those dotfile, please check [ansible-dotfiles](https://github.com/BaptisteBdn/ansible-dotfiles).
+For an easy way to install and use those dotfiles, please check [ansible-dotfiles](https://github.com/BaptisteBdn/ansible-dotfiles).
 
 ## Notes
 - Wallpapers can be found in `.config/wallpaper`.
