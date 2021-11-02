@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfile repository containing everything needed for my i3 setup. I am currently using EndeavorOS (arch based) but it should work on other distro with minor modifications.
+My dotfile repository containing everything needed for my i3 setup : i3-gaps, rounded corners and pywal themes !. I am currently using EndeavorOS (arch based) but it should work on other distro with minor modifications.
 
 ![Desktop gif](screenshots/overview.gif)
 
@@ -8,7 +8,7 @@ My dotfile repository containing everything needed for my i3 setup. I am current
 ## What's in it?
 
 - WM: i3-gaps
-- Compositor: picom (ibhagwan's fork)
+- Compositor: picom with rounded corners (ibhagwan's fork)
 - Terminal: Alacritty  *Applications shown below are : vim, pipes.sh, thunar*
 ![launcher rofi](screenshots/terminal.png)
 - Notifications: Dunst
