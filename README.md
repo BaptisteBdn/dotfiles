@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfile repository containing everything needed for my i3 setup : i3-gaps, rounded corners and pywal themes !. I am currently using EndeavorOS (arch based) but it should work on other distro with minor modifications.
+My dotfile repository containing everything needed for my i3 setup : i3-gaps, rounded corners and pywal themes ! I am currently using EndeavourOS (arch based) but it should work on other distro with minor modifications.
 
 ![Desktop gif](screenshots/overview.gif)
 
@@ -9,7 +9,7 @@ My dotfile repository containing everything needed for my i3 setup : i3-gaps, ro
 
 - WM: i3-gaps
 - Compositor: picom with rounded corners (ibhagwan's fork)
-- Terminal: Alacritty  *Applications shown below are : vim, pipes.sh, thunar*
+- Terminal: Alacritty  (*Applications shown below are : vim, pipes.sh, thunar*)
 ![launcher rofi](screenshots/terminal.png)
 - Notifications: Dunst
 - Launcher & Powermenu: Rofi
@@ -28,5 +28,7 @@ For an easy way to install and use those dotfile, please check [ansible-dotfiles
 
 ## Notes
 - Wallpapers can be found in `.config/wallpaper`.
+- Font is DejaVuSans
+- Original resolution is 1440p but it should work with other resolutions (screenshots are 1080p)
 - I tweaked some generated pywal schemes in order to have better results, in order to keep those changes I added the `.cache/wal/schemes` folder.
 - This design is inspired by [k-vernooy](https://github.com/k-vernooy/dotfiles).
