@@ -18,7 +18,10 @@ My dotfile repository containing everything needed for my i3 setup. I am current
 - Status bar: polybar, with Nerd Fonts Hack
 - File manager: Thunar, with Nordic darker theme
 - Colors and theme management using pywal
-
+- Basic dotfiles :
+    - i3 config file
+    - .zshrc and .zshrc.d
+    - .vimrc
 ## Usage & Installation
 
 For an easy way to install and use those dotfile, please check [ansible-dotfiles](https://github.com/BaptisteBdn/ansible-dotfiles).
