@@ -13,14 +13,11 @@
 
 pidof dunst && killall dunst
 
-dunst -config ~/.config/dunst/dunstrc \
-	-lb "${color0:-#F0F0F0}" \
-	-nb "${color0:-#F0F0F0}" \
-	-cb "${color0:-#F0F0F0}" \
-	-lf "${color2:=#000000}" \
-	-bf "${color2:=#000000}" \
-	-cf "${color2:=#000000}" \
-	-nf "${color2:=#000000}" \
-	-lfr "${color2:=#000000}" \
-	-nfr "${color2:=#000000}" \
-	-cfr "${color2:=#000000}" > /dev/null 2>&1 &
+DUNST_FILE=~/.config/dunst/dunstrc
+
+# update dunst based on pywal colors.
+sed -i '/background = /s/.*/    background = "'$color0'"/' $DUNST_FILE
+sed -i '/foreground = /s/.*/    foreground = "'$color2'"/' $DUNST_FILE
+sed -i '/frame_color = /s/.*/    frame_color = "'$color2'"/' $DUNST_FILE
+
+dunst -config ~/.config/dunst/dunstrc > /dev/null 2>&1 &
