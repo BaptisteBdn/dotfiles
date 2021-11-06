@@ -52,7 +52,7 @@ font-1 = DejaVuSansMono:style=Regular:pixelsize=17:antialias=true;3
 
 modules-left = i3
 modules-center = xwindow
-modules-right = spotify spotify-prev spotify-play-pause spotify-next audio seafile system-bluetooth-bluetoothctl wlan lan date 
+modules-right = spotify spotify-prev spotify-play-pause spotify-next audio system-bluetooth-bluetoothctl seafile wlan lan date 
 
 enable-ipc = true
 
@@ -182,6 +182,7 @@ type = custom/script
 exec = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
 tail = true
 click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
+interval = 10
 
 [module/seafile]
 type = custom/script

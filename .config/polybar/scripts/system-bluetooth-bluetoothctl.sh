@@ -1,26 +1,25 @@
 #!/bin/sh
 
 bluetooth_print() {
-    bluetoothctl | while read -r; do
-        if [ "$(systemctl is-active "bluetooth.service")" = "active" ]; then
-            echo ''
+    if [ "$(systemctl is-active "bluetooth.service")" = "active" ]; then
+        devices_paired=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+        is_connected=0
+        for device in $devices_paired; do
+            device_info=$(bluetoothctl info "$device")
 
-            devices_paired=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+            if echo "$device_info" | grep -q "Connected: yes"; then
+                device_alias=$(echo "$device_info" | grep "Alias" | cut -d ' ' -f 2-)
+                is_connected=1
+                echo '%{F#02c084}'
+            fi
+        done
 
-            for device in $devices_paired; do
-                device_info=$(bluetoothctl info "$device")
-
-                if echo "$device_info" | grep -q "Connected: yes"; then
-                    device_alias=$(echo "$device_info" | grep "Alias" | cut -d ' ' -f 2-)
-
-                    echo ''
-
-                fi
-            done
-        else
-            echo ""
+        if [ $is_connected == 0 ]; then
+            echo '%{F#ed404c}'
         fi
-    done
+    else
+        echo '%{F#ed404c}'
+    fi
 }
 
 bluetooth_toggle() {
