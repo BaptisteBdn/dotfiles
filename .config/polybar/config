@@ -52,7 +52,7 @@ font-1 = DejaVuSansMono:style=Regular:pixelsize=17:antialias=true;3
 
 modules-left = i3
 modules-center = xwindow
-modules-right = spotify spotify-prev spotify-play-pause spotify-next audio system-bluetooth-bluetoothctl wlan lan date 
+modules-right = spotify spotify-prev spotify-play-pause spotify-next audio seafile system-bluetooth-bluetoothctl wlan lan date 
 
 enable-ipc = true
 
@@ -182,6 +182,12 @@ type = custom/script
 exec = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh
 tail = true
 click-left = ~/.config/polybar/scripts/system-bluetooth-bluetoothctl.sh --toggle &
+
+[module/seafile]
+type = custom/script
+exec = ~/.config/polybar/scripts/get_seafile_sync_status.sh
+tail = true
+interval = 30
 
 [module/battery]
 type = internal/battery

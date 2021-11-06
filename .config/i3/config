@@ -301,6 +301,9 @@ exec_always --no-startup-id pkill picom; picom --no-use-damage
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+# Start seaf-cli daemon
+exec --no-startup-id seaf-cli start
+
 #set floating (nontiling) for special apps
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Thunar"] floating enable
