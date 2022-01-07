@@ -52,14 +52,12 @@ font-1 = DejaVuSansMono:style=Regular:pixelsize=17:antialias=true;3
 
 modules-left = i3
 modules-center = xwindow
-modules-right = spotify spotify-prev spotify-play-pause spotify-next audio system-bluetooth-bluetoothctl seafile wlan lan date 
+modules-right = spotify spotify-prev spotify-play-pause spotify-next audio system-bluetooth-bluetoothctl seafile wireguard wlan lan date 
 
 enable-ipc = true
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-#tray-position = right
 
 [module/xwindow]
 type = internal/xwindow
@@ -176,6 +174,12 @@ format = <label>
 click-left = playerctl play-pause spotify
 click-right = playerctl next spotify
 exec = ~/.config/polybar/scripts/get_spotify_status.sh
+
+[module/wireguard]
+type = custom/script
+tail = false
+click-left = ~/.config/polybar/scripts/polybar-wireguard.sh --toggle &
+exec = ~/.config/polybar/scripts/polybar-wireguard.sh
 
 [module/system-bluetooth-bluetoothctl]
 type = custom/script
